@@ -1,6 +1,7 @@
 using System.Text;
 using Cwiczenia11.Context;
 using Cwiczenia11.Middlewares;
+using Cwiczenia11.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -42,6 +43,7 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 builder.Services.AddControllers();
+builder.Services.AddScoped<IDbService, DbService>();
 
 builder.Services.AddDbContext<Cw11Context>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
